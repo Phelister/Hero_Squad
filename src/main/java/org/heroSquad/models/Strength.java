@@ -14,6 +14,10 @@ public class Strength {
         this.deleted = false;
     }
 
+    public Strength() {
+
+    }
+
     public int getId() {
         return id;
     }

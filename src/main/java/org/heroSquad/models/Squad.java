@@ -10,9 +10,6 @@ public class Squad {
 
     private boolean deleted;
 
-//    @OneToMany(mappedBy = "id", fetch = FetchType.EAGER)
-//    private List<Hero> heroes = new ArrayList<>();
-
     public Squad(int maxSize, String name, Cause cause) {
         this.maxSize = maxSize;
         this.name = name;

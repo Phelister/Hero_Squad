@@ -1,4 +1,4 @@
-package org.safaricom;
+package org.heroSquad;
 
 public class Main {
     public static void main(String[] args) {

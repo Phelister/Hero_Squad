@@ -6,35 +6,20 @@ public class Hero {
     private int id;
     private String name;
     private int age;
-
-
+    private int strengthId;
 
     private int weaknessId;
-    private int squadIid;
+    private int squadId;
     private boolean deleted;
-    private Strength specialPower;
-
-    private Weakness weakness;
-
-    private Squad squad;
 
     public Hero() {
-        this.name=null;
-        this.age =0;
-        this.specialPower=null;
-        this.weakness=null;
     }
 
     public Hero(String name, int age, Strength specialPower, Weakness weakness) {
         this.name = name;
         this.age = age;
-        this.specialPower = specialPower;
-        this.weakness = weakness;
         this.deleted=false;
     }
-
-
-    private int strengthId;
 
     public int getStrengthId() {
         return strengthId;
@@ -53,11 +38,11 @@ public class Hero {
     }
 
     public int getSquadIid() {
-        return squadIid;
+        return squadId;
     }
 
     public void setSquadIid(int squadIid) {
-        this.squadIid = squadIid;
+        this.squadId = squadIid;
     }
     public int getId() {
         return id;
@@ -83,19 +68,5 @@ public class Hero {
         this.age = age;
     }
 
-    public Strength getSpecialPower() {
-        return specialPower;
-    }
-
-    public void setSpecialPower(Strength specialPower) {
-        this.specialPower = specialPower;
-    }
-
-    public Weakness getWeakness() {
-        return weakness;
-    }
-
-    public void setWeakness(Weakness weakness) {
-        this.weakness = weakness;
-    }
 }
+

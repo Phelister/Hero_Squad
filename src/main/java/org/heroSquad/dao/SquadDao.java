@@ -14,7 +14,7 @@ public class SquadDao {
 
         public static void create(Squad squad){
             try(Connection connection = sql2o.open()){
-                String query = "INSERT INTO squads ( maxSize,name, cause) VALUES (:name, :max_size, :cause);";
+                String query = "INSERT INTO squad ( maxSize,name, cause) VALUES (:name, :max_size, :cause);";
                 connection.createQuery(query)
                         .addParameter("maxSize", squad.getMaxSize())
                         .addParameter("name", squad.getName())
@@ -27,7 +27,7 @@ public class SquadDao {
 
         public static Info findSquadById(int squadId) {
             try (Connection connection = sql2o.open()) {
-                String querySquads = "SELECT * FROM squads WHERE NOT deleted AND id = :squadId;";
+                String querySquads = "SELECT * FROM squad WHERE NOT deleted AND id = :squadId;";
                 Squad squad = connection.createQuery(querySquads)
                         .addParameter("squadId", squadId)
                         .executeAndFetchFirst(Squad.class);

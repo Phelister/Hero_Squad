@@ -11,7 +11,7 @@ public class WeaknessDao {
 
         public static void create(Weakness weakness){
             try(Connection connection = sql2o.open()){
-                String query = "INSERT INTO strengths (name, score) VALUES (:name, :score);";
+                String query = "INSERT INTO strength (name, score) VALUES (:name, :score);";
                 connection.createQuery(query)
                         .addParameter("name", weakness.getName())
                         .addParameter("score", weakness.getScore())

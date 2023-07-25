@@ -10,15 +10,22 @@ public class Hero {
 
     private int weaknessId;
     private int squadId;
-    private boolean deleted;
+    private boolean deleted=false;
 
     public Hero() {
     }
 
-    public Hero(String name, int age, Strength specialPower, Weakness weakness) {
+    public Hero(String name, int age) {
         this.name = name;
         this.age = age;
-        this.deleted=false;
+    }
+
+    public Hero(String name, int age, int strengthId, int weaknessId, int squadId) {
+        this.name = name;
+        this.age = age;
+        this.strengthId = strengthId;
+        this.weaknessId = weaknessId;
+        this.squadId = squadId;
     }
 
     public int getStrengthId() {

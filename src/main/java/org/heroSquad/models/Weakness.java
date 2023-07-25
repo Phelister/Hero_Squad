@@ -4,15 +4,18 @@ public class Weakness {
     private int id;
     private String name;
     private Double score;
+    private boolean deleted=false;
 
-    public Weakness(int id, String name, Double score) {
-        this.id = id;
+    public Weakness( String name, Double score) {
         this.name = name;
         this.score = score;
         this.deleted = false;
     }
+    public Weakness(){
 
-    private boolean deleted=false;
+    }
+
+
 
     public int getId() {
         return id;

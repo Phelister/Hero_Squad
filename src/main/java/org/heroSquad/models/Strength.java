@@ -5,13 +5,22 @@ public class Strength {
     private int id;
     private String name;
     private Double score;
-    private boolean deleted;
 
-    public Strength(int id, String name, Double score) {
-        this.id = id;
+
+
+    private boolean deleted=false;
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+    public Strength(String name, Double score) {
         this.name = name;
         this.score = score;
-        this.deleted = false;
     }
 
     public Strength() {

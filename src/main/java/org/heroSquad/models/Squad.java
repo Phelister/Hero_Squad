@@ -16,6 +16,9 @@ public class Squad {
         this.cause = cause;
         this.deleted=false;
     }
+    public Squad(){
+
+    }
     public int getId() {
         return id;
     }

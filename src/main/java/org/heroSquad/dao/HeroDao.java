@@ -14,7 +14,7 @@ public class HeroDao {
 
         public static List<Hero> findAllHeroesBySquadId(int squadId) {
             try (Connection connection = sql2o.open()) {
-                String queryHeroes = "SELECT * FROM heroes WHERE NOT deleted AND squad_id = :squadId;";
+                String queryHeroes = "SELECT * FROM hero WHERE NOT deleted AND squad_id = :squadId;";
                 return connection.createQuery(queryHeroes)
                         .addParameter("squadId", squadId)
                         .executeAndFetch(Hero.class);

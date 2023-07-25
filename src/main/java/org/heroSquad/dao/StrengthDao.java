@@ -4,23 +4,18 @@ import org.heroSquad.config.DatabaseConfig;
 import org.heroSquad.models.Strength;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
-import
+
+import java.util.List;
 
 public class StrengthDao {
-//        Create Strength
-//    List available strengths
-//    Update strength (name and score)
-//    Update strength details
-//    Delete strength
+
 
         private static final Sql2o sql2o = DatabaseConfig.getDatabase();
          private static Connection connection = sql2o.open();
 
         public static void create(Strength strength){
             try{
-                String name= strength.getName();
-                Double score = strength.getScore();
-                String query = "INSERT INTO strength (name, score) VALUES (name, score);";
+                String query = "INSERT INTO strength (name, score) VALUES (:name, :score);";
                 connection.createQuery(query)
                         .addParameter("name", strength.getName())
                         .addParameter("score", strength.getScore())
@@ -30,7 +25,7 @@ public class StrengthDao {
             }
         }
 
-        public static void listStrengths(){
+        public static List<Strength> listStrengths(){
             try {
 
                 String query = "select * from strength where NOT deleted;";
@@ -39,39 +34,44 @@ public class StrengthDao {
             } catch (Exception exception){
                 System.out.println(exception.getMessage());
             }
+            return null;
         }
 
 
-        public static void updateNameAndScore(String name, String id){
+        public static boolean updateNameAndScore(String strengthName, String strengthId){
             try{
                 String query = "UPDATE strength SET name = :name WHERE id = :id;";
                 connection.createQuery(query)
-                        .addParameter("name", name)
-                        .addParameter("id", id)
+                        .addParameter("name", strengthName)
+                        .addParameter("id", strengthId)
                         .executeUpdate();
+                return true;
             } catch (Exception exception){
                 System.out.println(exception.getMessage());
+                return false;
             }
         }
-    public static void updateAllStrengthDetails(Strength strength){
+    public static boolean updateAllStrengthDetails(Strength strength){
         try{
-            int id=strength.getId();
-            String name= strength.getName();
-            Double score = strength.getScore();
-            boolean delete=strength.isDeleted();
-            String query = "UPDATE strength SET name = name, score=score  deleted=delete WHERE id = :id;";
+
+            String query = "UPDATE strength SET name =: name, score= :score  deleted=:delete WHERE id = :id;";
             connection.createQuery(query)
                     .addParameter("name", strength.getName())
                     .addParameter("score", strength.getScore())
+                    .addParameter("delete", strength.isDeleted())
+                    .addParameter("id", strength.getId())
                     .executeUpdate();
+            return true;
         } catch (Exception exception){
             System.out.println(exception.getMessage());
         }
+        return false;
     }
-    public static boolean deleteStrength(int  id){
+    public static boolean deleteStrength(int  strengthId){
         try{
             String query = "UPDATE strength SET deleted = true WHERE id = :id;";
             connection.createQuery(query)
+                    .addParameter("id", strengthId)
                     .executeUpdate();
             return true;
         } catch (Exception exception){

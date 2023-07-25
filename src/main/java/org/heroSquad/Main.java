@@ -20,8 +20,18 @@ public class Main {
         get("/strength/add", (req, res)->{
             return SharedUtils.render(new HashMap<>(), "create-strength.hbs");
         });
+        get("/weakness/add", (req, res)->{
+            return SharedUtils.render(new HashMap<>(), "create-weakness.hbs");
+        });
+        get("/squad/add", (req, res)->{
+            return SharedUtils.render(new HashMap<>(), "create-squad.hbs");
+        });
+        get("/hero/add", (req, res)->{
+            return SharedUtils.render(new HashMap<>(), "create-hero.hbs");
+        });
 
         post("/create-strength", (req, res)->{
+
             String name = req.queryParams("name");
 
             double score = Double.valueOf(req.queryParams("score"));
@@ -36,7 +46,7 @@ public class Main {
             return null;
         });
 
-        System.out.println(SquadDao.findSquadById(2));
+       System.out.println(SquadDao.findSquadById(2));
         StrengthDao.getScoreById(2);
 
 

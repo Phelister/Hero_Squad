@@ -5,6 +5,7 @@ import org.heroSquad.dao.SquadDao;
 import org.heroSquad.dao.StrengthDao;
 import org.heroSquad.dao.WeaknessDao;
 import org.heroSquad.models.Hero;
+import org.heroSquad.models.Squad;
 import org.heroSquad.models.Strength;
 import org.heroSquad.models.Weakness;
 import org.heroSquad.utils.SharedUtils;
@@ -87,6 +88,16 @@ public class Main {
             System.out.println(weaknessId);
             Hero hero = new Hero(name, age, strengthId,weaknessId, squadId);
             HeroDao.create(hero);
+            res.redirect("/");
+            return null;
+        });
+        post("/create-squad", (req, res)->{
+
+            String name = req.queryParams("name");
+            int maxSize = Integer.valueOf(req.queryParams("maxSize"));
+            String cause= req.queryParams("cause");
+            Squad squad= new Squad(maxSize, name,cause);
+            SquadDao.createSquad(squad);
             res.redirect("/");
             return null;
         });

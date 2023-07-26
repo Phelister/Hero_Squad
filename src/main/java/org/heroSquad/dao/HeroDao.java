@@ -3,6 +3,8 @@ import org.heroSquad.config.DatabaseConfig;
 import org.heroSquad.models.Hero;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
+
+import java.util.ArrayList;
 import java.util.List;
 public class HeroDao {
 
@@ -20,7 +22,7 @@ public class HeroDao {
                         .executeAndFetch(Hero.class);
             } catch (Exception exception) {
                 System.out.println(exception.getMessage());
-                return  null;
+                return  new ArrayList<>();
             }
         }
 

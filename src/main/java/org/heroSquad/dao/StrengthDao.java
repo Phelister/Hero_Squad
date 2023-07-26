@@ -1,10 +1,12 @@
 package org.heroSquad.dao;
 
 import org.heroSquad.config.DatabaseConfig;
+import org.heroSquad.models.Hero;
 import org.heroSquad.models.Strength;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StrengthDao {
@@ -29,16 +31,16 @@ public class StrengthDao {
             try {
 
                 String query = "select * from strength where NOT deleted;";
-                connection.createQuery(query)
-                        .executeUpdate();
+                return connection.createQuery(query)
+                        .executeAndFetch(Strength.class);
             } catch (Exception exception){
                 System.out.println(exception.getMessage());
             }
-            return null;
+            return new ArrayList<>();
         }
 
 
-        public static boolean updateNameAndScore(String strengthName, String strengthId){
+        public static boolean updateName(String strengthName, String strengthId){
             try{
                 String query = "UPDATE strength SET name = :name WHERE id = :id;";
                 connection.createQuery(query)
@@ -51,6 +53,19 @@ public class StrengthDao {
                 return false;
             }
         }
+    public static boolean updateScore(String score, String strengthId){
+        try{
+            String query = "UPDATE strength SET score = :score WHERE id = :id;";
+            connection.createQuery(query)
+                    .addParameter("score", score)
+                    .addParameter("id", strengthId)
+                    .executeUpdate();
+            return true;
+        } catch (Exception exception){
+            System.out.println(exception.getMessage());
+            return false;
+        }
+    }
     public static boolean updateAllStrengthDetails(Strength strength){
         try{
 
@@ -87,7 +102,7 @@ public class StrengthDao {
                         .addParameter("id", id)
                         .executeScalar(Integer.class);
                 System.out.println(score);
-                return 0;
+                return score;
             } catch (Exception exception){
                 System.out.println(exception.getMessage());
                 return 0;

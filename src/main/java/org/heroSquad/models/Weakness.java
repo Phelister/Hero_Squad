@@ -4,6 +4,9 @@ public class Weakness {
     private int id;
     private String name;
     private Double score;
+
+
+
     private boolean deleted=false;
 
     public Weakness( String name, Double score) {
@@ -14,7 +17,13 @@ public class Weakness {
     public Weakness(){
 
     }
+    public boolean isDeleted() {
+        return deleted;
+    }
 
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
 
 
     public int getId() {

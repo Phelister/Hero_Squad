@@ -4,25 +4,30 @@ import org.heroSquad.config.DatabaseConfig;
 import org.heroSquad.dto.Info;
 import org.heroSquad.models.Hero;
 import org.heroSquad.models.Squad;
+import org.heroSquad.models.Strength;
+import org.heroSquad.models.Weakness;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SquadDao {
         private static final Sql2o sql2o = DatabaseConfig.getDatabase();
 
-        public static void create(Squad squad){
+        public static boolean createSquad(Squad squad){
             try(Connection connection = sql2o.open()){
-                String query = "INSERT INTO squad ( maxSize,name, cause) VALUES (:name, :max_size, :cause);";
+                String query = "INSERT INTO squad ( max_size,name, cause) VALUES (:max_size,:name, :cause);";
                 connection.createQuery(query)
-                        .addParameter("maxSize", squad.getMaxSize())
+                        .addParameter("max_size", squad.getMaxSize())
                         .addParameter("name", squad.getName())
                         .addParameter("cause", squad.getCause())
                         .executeUpdate();
+                return true;
             } catch (Exception exception){
                 System.out.println(exception.getMessage());
             }
+            return false;
         }
 
         public static Info findSquadById(int squadId) {
@@ -44,6 +49,19 @@ public class SquadDao {
                 return  null;
             }
         }
+
+    public static List<Squad> findAllSquads() {
+        try (Connection connection = sql2o.open()) {
+            String querySquads = "SELECT * FROM squad WHERE NOT deleted;";
+            return connection.createQuery(querySquads)
+                    .executeAndFetch(Squad.class);
+        } catch (Exception exception) {
+            System.out.println(exception.getMessage());
+            return  new ArrayList<>();
+        }
+    }
+
+
 
         private static int getHeroScore(List<Hero> heroes, int type) {
             int score = 0;

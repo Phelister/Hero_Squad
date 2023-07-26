@@ -52,6 +52,21 @@ public class SquadDao {
             }
         }
 
+    public static int findSquadByName(String squadName) {
+        try (Connection connection = sql2o.open()) {
+            String querySquads = "SELECT * FROM squad WHERE NOT deleted AND name = :squadName;";
+            Squad squad = connection.createQuery(querySquads)
+                    .addParameter("squadName", squadName)
+                    .executeAndFetchFirst(Squad.class);
+//                System.out.println(squad);
+            return squad.getId();
+        } catch (Exception exception) {
+            System.out.println("wow");
+            System.out.println(exception.getMessage());
+            return  -1;
+        }
+    }
+
     public static List<Squad> findAllSquads() {
         try (Connection connection = sql2o.open()) {
             String querySquads = "SELECT * FROM squad WHERE NOT deleted;";

@@ -1,8 +1,10 @@
 package org.heroSquad;
 
+import org.heroSquad.dao.HeroDao;
 import org.heroSquad.dao.SquadDao;
 import org.heroSquad.dao.StrengthDao;
 import org.heroSquad.dao.WeaknessDao;
+import org.heroSquad.models.Hero;
 import org.heroSquad.models.Strength;
 import org.heroSquad.models.Weakness;
 import org.heroSquad.utils.SharedUtils;
@@ -72,19 +74,19 @@ public class Main {
         post("/create-hero", (req, res)->{
 
             String name = req.queryParams("name");
-            String age = req.queryParams("age");
-            String squadname= req.queryParams("squadname");
-            String strengthname=req.queryParams("strengthname");
-            String weaknessname=req.queryParams("weaknessname");
-            System.out.println(name);
-
-
-//            Weakness weakness = new Weakness();
-//            weakness.setScore(score);
-//            weakness.setName(name);
-//
-//            WeaknessDao.create(weakness);
-
+            int age = Integer.valueOf(req.queryParams("age"));
+            String squadName= req.queryParams("squadname");
+            String strengthName=req.queryParams("strengthname");
+            String weaknessName=req.queryParams("weaknessname");
+            System.out.println(weaknessName);
+            System.out.println(strengthName);
+            int squadId=SquadDao.findSquadByName(squadName);
+            int strengthId=StrengthDao.findStrengthByName(strengthName);
+            System.out.println(strengthId);
+            int weaknessId=WeaknessDao.findWeaknessByName(weaknessName);
+            System.out.println(weaknessId);
+            Hero hero = new Hero(name, age, strengthId,weaknessId, squadId);
+            HeroDao.create(hero);
             res.redirect("/");
             return null;
         });

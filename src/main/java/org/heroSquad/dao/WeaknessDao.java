@@ -99,6 +99,21 @@ public class WeaknessDao {
         return false;
     }
 
+    public static int findWeaknessByName(String weaknessName) {
+        try (Connection connection = sql2o.open()) {
+            String querySquads = "SELECT * FROM weakness WHERE NOT deleted AND name = :weaknessName;";
+            Weakness weakness = connection.createQuery(querySquads)
+                    .addParameter("weaknessName", weaknessName)
+                    .executeAndFetchFirst(Weakness.class);
+//                System.out.println(squad);
+            return weakness.getId();
+        } catch (Exception exception) {
+            System.out.println("wow");
+            System.out.println(exception.getMessage());
+            return  -1;
+        }
+    }
+
     public static int getScoreById(int id){
             try(Connection connection = sql2o.open()){
                 String query = "SELECT score FROM weakness WHERE id = :id;";

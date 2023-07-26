@@ -10,7 +10,21 @@ public class HeroDao {
 
         private static final Sql2o sql2o = DatabaseConfig.getDatabase();
 
-        public static void create(Hero hero){
+        public static boolean create(Hero hero){
+            try(Connection connection = sql2o.open()){
+                String query = "INSERT INTO hero ( name,age, squad_id, weakness_id, strength_id) VALUES (:name,:age, :squad_id, :weakness_id, :strength_id);";
+                connection.createQuery(query)
+                        .addParameter("age", hero.getAge())
+                        .addParameter("name", hero.getName())
+                        .addParameter("squad_id", hero.getSquadIid())
+                        .addParameter("weakness_id", hero.getWeaknessId())
+                        .addParameter("strength_id", hero.getStrengthId())
+                        .executeUpdate();
+                return true;
+            } catch (Exception exception){
+                System.out.println(exception.getMessage());
+            }
+            return false;
 
         }
 

@@ -49,10 +49,10 @@
             <h3 class="text-center">Squad</h3>
             <p class="text-center">Fill in Squad details below:</p>
 
-            <form method="post" action="/create-strength">
+            <form method="post" action="/create-squad">
 
             <label for="name" class="form-label">Name:</label>
-            <input type="text" class="form-control" id="name"  placeholder="name"/>
+            <input type="text" class="form-control" id="name" name="name" placeholder="name"/>
             <label for="maxSize">Max_Size:</label>
             <input  id="maxSize" name="maxSize" type="number" class="form-control" placeholder="max_size">
 
@@ -68,7 +68,7 @@
                        </select>
 
             <div class="mb-4 text-center mt-3">
-                <input  type="submit" class="btn btn-primary"  value="Add Strength">
+                <input  type="submit" class="btn btn-primary"  value="Add Squad">
             </div>
 
              </form>

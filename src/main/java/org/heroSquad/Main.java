@@ -2,7 +2,9 @@ package org.heroSquad;
 
 import org.heroSquad.dao.SquadDao;
 import org.heroSquad.dao.StrengthDao;
+import org.heroSquad.dao.WeaknessDao;
 import org.heroSquad.models.Strength;
+import org.heroSquad.models.Weakness;
 import org.heroSquad.utils.SharedUtils;
 
 import java.util.HashMap;
@@ -33,7 +35,7 @@ public class Main {
         post("/create-strength", (req, res)->{
 
             String name = req.queryParams("name");
-
+            System.out.println(name);
             double score = Double.valueOf(req.queryParams("score"));
 
             Strength strength = new Strength();
@@ -41,6 +43,47 @@ public class Main {
             strength.setName(name);
 
             StrengthDao.create(strength);
+
+            res.redirect("/");
+            return null;
+        });
+
+
+        post("/create-weakness", (req, res)->{
+
+            String name = req.queryParams("name");
+            System.out.println(name);
+            double score = Double.valueOf(req.queryParams("score"));
+            if(score>0){
+                score=-1* score;
+            }
+
+            Weakness weakness = new Weakness();
+            weakness.setScore(score);
+            weakness.setName(name);
+
+            WeaknessDao.create(weakness);
+
+            res.redirect("/");
+            return null;
+        });
+
+
+        post("/create-hero", (req, res)->{
+
+            String name = req.queryParams("name");
+            String age = req.queryParams("age");
+            String squadname= req.queryParams("squadname");
+            String strengthname=req.queryParams("strengthname");
+            String weaknessname=req.queryParams("weaknessname");
+            System.out.println(name);
+
+
+//            Weakness weakness = new Weakness();
+//            weakness.setScore(score);
+//            weakness.setName(name);
+//
+//            WeaknessDao.create(weakness);
 
             res.redirect("/");
             return null;

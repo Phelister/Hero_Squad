@@ -12,6 +12,33 @@
      />
 <body>
 
+<nav class="navbar navbar-expand-md navbar-yellow bg-yellow">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img
+            src="./images/logo.jpg"
+            alt="herosquad"
+            width="10"
+            height="30"
+            class="d-inline-block align-text-top rounded-circle"
+          />
+          HERO
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navmenu">
+
+        </div>
+      </div>
+    </nav>
+
  <!-- form details -->
 
     <section
@@ -22,21 +49,21 @@
             <h3 class="text-center">Squad</h3>
             <p class="text-center">Fill in Squad details below:</p>
 
-            <form method="post" action="/create-strength">
+            <form method="post" action="/create-hero">
 
             <label for="name" class="form-label">Name:</label>
-            <input type="text" class="form-control" id="name"  placeholder="name"/>
+            <input type="text" class="form-control" id="name" name="name" placeholder="name"/>
             <label for="age">Age:</label>
             <input  id="age" name="age" type="number" class="form-control" placeholder="age">
              <label for="squadname" class="form-label">Squad Name:</label>
-             <input type="text" class="form-control" id="squadname"  placeholder="squadname"/>
+             <input type="text" class="form-control" id="squadname" name="squadname" placeholder="squadname"/>
              <label for="strengthname" class="form-label"> Strength Name:</label>
-             <input type="strengthname" class="form-control" id="weaknessname"  placeholder="strengthname"/>
-             <label for="weaknessname" class="form-label"> Strength Name:</label>
-             <input type="weaknessname" class="form-control" id="weaknessname"  placeholder="weaknessname"/>
+             <input type="strengthname" class="form-control" id="strengthname" name="strengthname" placeholder="strengthname"/>
+             <label for="weaknessname" class="form-label"> Weakness Name:</label>
+             <input type="weaknessname" class="form-control" id="weaknessname" name="weaknessname"  placeholder="weaknessname"/>
 
             <div class="mb-4 text-center mt-3">
-                <input  type="submit" class="btn btn-primary"  value="Add Strength">
+                <input  type="submit" class="btn btn-primary"  value="Hero">
             </div>
 
              </form>

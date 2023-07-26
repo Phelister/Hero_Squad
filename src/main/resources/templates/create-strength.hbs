@@ -12,6 +12,33 @@
      />
 <body>
 
+<nav class="navbar navbar-expand-md navbar-yellow bg-yellow">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img
+            src="./images/logo.jpg"
+            alt="herosquad"
+            width="10"
+            height="30"
+            class="d-inline-block align-text-top rounded-circle"
+          />
+          STRENGTH
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navmenu">
+
+        </div>
+      </div>
+    </nav>
+
  <!-- form details -->
 
     <section
@@ -25,7 +52,7 @@
             <form method="post" action="/create-strength">
 
             <label for="name" class="form-label">Name:</label>
-            <input type="text" class="form-control" id="name"  placeholder="name"/>
+            <input type="text" class="form-control" name="name" id="name"  placeholder="name"/>
             <label for="score">Score:</label>
             <input  id="score" name="score" type="number" class="form-control" placeholder="score">
 

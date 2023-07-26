@@ -2,6 +2,7 @@ package org.heroSquad.dao;
 
 import org.heroSquad.config.DatabaseConfig;
 import org.heroSquad.models.Hero;
+import org.heroSquad.models.Squad;
 import org.heroSquad.models.Strength;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
@@ -93,6 +94,21 @@ public class StrengthDao {
             System.out.println(exception.getMessage());
         }
         return false;
+    }
+
+    public static int findStrengthByName(String strengthName) {
+        try (Connection connection = sql2o.open()) {
+            String querySquads = "SELECT * FROM strength WHERE NOT deleted AND name = :strengthName;";
+            Strength strength = connection.createQuery(querySquads)
+                    .addParameter("strengthName", strengthName)
+                    .executeAndFetchFirst(Strength.class);
+//                System.out.println(squad);
+            return strength.getId();
+        } catch (Exception exception) {
+            System.out.println("wow");
+            System.out.println(exception.getMessage());
+            return  -1;
+        }
     }
 
         public static int getScoreById(int id){

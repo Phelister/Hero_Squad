@@ -6,7 +6,7 @@ import org.heroSquad.models.Squad;
 import java.util.List;
 
 public class Info {
-
+//combine objects
         private Squad squad;
         private List<Hero> heroes;
         private int weaknessScore;

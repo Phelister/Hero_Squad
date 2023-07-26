@@ -12,6 +12,33 @@
      />
 <body>
 
+<nav class="navbar navbar-expand-md navbar-yellow bg-yellow">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img
+            src="./images/logo.jpg"
+            alt="herosquad"
+            width="10"
+            height="30"
+            class="d-inline-block align-text-top rounded-circle"
+          />
+          SQUAD
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navmenu">
+
+        </div>
+      </div>
+    </nav>
+
  <!-- form details -->
 
     <section
@@ -22,16 +49,16 @@
             <h3 class="text-center">Squad</h3>
             <p class="text-center">Fill in Squad details below:</p>
 
-            <form method="post" action="/create-strength">
+            <form method="post" action="/create-squad">
 
             <label for="name" class="form-label">Name:</label>
-            <input type="text" class="form-control" id="name"  placeholder="name"/>
+            <input type="text" class="form-control" id="name" name="name" placeholder="name"/>
             <label for="maxSize">Max_Size:</label>
             <input  id="maxSize" name="maxSize" type="number" class="form-control" placeholder="max_size">
 
 
-            <label for="cause" class="form-label">Cause:</label>
-                        <select class="form-select" id="gender">
+            <label for="cause"  class="form-label">Cause:</label>
+                        <select class="form-select" name="cause" id="gender">
                           <option value="sexism" selected></option>
                           <option value="computer illiteracy">computer illiteracy</option>
                           <option value="covering mouth">covering mouth</option>
@@ -41,7 +68,7 @@
                        </select>
 
             <div class="mb-4 text-center mt-3">
-                <input  type="submit" class="btn btn-primary"  value="Add Strength">
+                <input  type="submit" class="btn btn-primary"  value="Add Squad">
             </div>
 
              </form>

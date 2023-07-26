@@ -4,16 +4,16 @@ public class Squad {
 
     //many heros can belong to one squad
     private int id;
-    private int maxSize;
+    private int max_size;
     private String name;
-    private Cause cause;
+    private String cause;
 
     private boolean deleted;
 
-    public Squad(int maxSize, String name, Cause cause) {
-        this.maxSize = maxSize;
+    public Squad(int max_size, String name, String cause) {
+        this.max_size = max_size;
         this.name = name;
-        this.cause = cause;
+        this.cause = String.valueOf(cause);
         this.deleted=false;
     }
     public Squad(){
@@ -28,11 +28,11 @@ public class Squad {
     }
 
     public int getMaxSize() {
-        return maxSize;
+        return max_size;
     }
 
     public void setMaxSize(int maxSize) {
-        this.maxSize = maxSize;
+        this.max_size = maxSize;
     }
 
     public String getName() {
@@ -43,11 +43,22 @@ public class Squad {
         this.name = name;
     }
 
-    public Cause getCause() {
+    public String getCause() {
         return cause;
     }
 
-    public void setCause(Cause cause) {
+    public void setCause(String cause) {
         this.cause = cause;
+    }
+
+    @Override
+    public String toString() {
+        return "Squad{" +
+                "id=" + id +
+                ", max_size=" + max_size +
+                ", name='" + name + '\'' +
+                ", cause='" + cause + '\'' +
+                ", deleted=" + deleted +
+                '}';
     }
 }

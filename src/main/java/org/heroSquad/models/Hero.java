@@ -6,10 +6,10 @@ public class Hero {
     private int id;
     private String name;
     private int age;
-    private int strengthId;
+    private int strength_id;
 
-    private int weaknessId;
-    private int squadId;
+    private int weakness_id;
+    private int squad_id;
     private boolean deleted=false;
 
     public Hero() {
@@ -20,36 +20,36 @@ public class Hero {
         this.age = age;
     }
 
-    public Hero(String name, int age, int strengthId, int weaknessId, int squadId) {
+    public Hero(String name, int age, int strength_id, int weakness_id, int squad_id) {
         this.name = name;
         this.age = age;
-        this.strengthId = strengthId;
-        this.weaknessId = weaknessId;
-        this.squadId = squadId;
+        this.strength_id = strength_id;
+        this.weakness_id = weakness_id;
+        this.squad_id = squad_id;
     }
 
     public int getStrengthId() {
-        return strengthId;
+        return strength_id;
     }
 
     public void setStrengthId(int strengthId) {
-        this.strengthId = strengthId;
+        this.strength_id = strength_id;
     }
 
     public int getWeaknessId() {
-        return weaknessId;
+        return weakness_id;
     }
 
     public void setWeaknessId(int weaknessId) {
-        this.weaknessId = weaknessId;
+        this.weakness_id = weaknessId;
     }
 
     public int getSquadIid() {
-        return squadId;
+        return squad_id;
     }
 
     public void setSquadIid(int squadIid) {
-        this.squadId = squadIid;
+        this.squad_id = squad_id;
     }
     public int getId() {
         return id;
@@ -75,5 +75,17 @@ public class Hero {
         this.age = age;
     }
 
+    @Override
+    public String toString() {
+        return "Hero{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", strength_id=" + strength_id +
+                ", weakness_id=" + weakness_id +
+                ", squad_id=" + squad_id +
+                ", deleted=" + deleted +
+                '}';
+    }
 }
 

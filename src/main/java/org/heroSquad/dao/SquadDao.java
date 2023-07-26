@@ -36,6 +36,7 @@ public class SquadDao {
                 Squad squad = connection.createQuery(querySquads)
                         .addParameter("squadId", squadId)
                         .executeAndFetchFirst(Squad.class);
+//                System.out.println(squad);
                 List<Hero> heroes = HeroDao.findAllHeroesBySquadId(squadId);
 
                 Info info = new Info();
@@ -45,6 +46,7 @@ public class SquadDao {
                 info.setWeaknessScore(getHeroScore(heroes, 1));
                 return info;
             } catch (Exception exception) {
+                System.out.println("wow");
                 System.out.println(exception.getMessage());
                 return  null;
             }

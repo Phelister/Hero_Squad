@@ -46,8 +46,8 @@ public class Main {
             return null;
         });
 
-       System.out.println(SquadDao.findSquadById(2));
-        StrengthDao.getScoreById(2);
+       System.out.print(SquadDao.findSquadById(2));
+       StrengthDao.getScoreById(4);
 
 
 

@@ -12,11 +12,11 @@ import org.heroSquad.utils.SharedUtils;
 
 import java.util.HashMap;
 
-import static spark.Spark.post;
-import static spark.Spark.get;
+import static spark.Spark.*;
 
 public class Main {
     public static void main(String[] args) {
+        staticFileLocation("/public");
 
         get("/", (req, res)->{
             return SharedUtils.render(new HashMap<>(), "index.hbs");
